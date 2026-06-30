@@ -1,0 +1,23 @@
+ui:
+  theme: dark              # dark, light, nord, monokai, dracula, solarized
+  colors:
+    user_text: cyan
+    assistant_text: green
+    tool_text: yellow
+    error_text: red
+  
+  display:
+    streaming: true        # Show real-time token streaming
+    token_counter: true    # Show live token count
+    memory_indicator: true # Show memory usage
+    provider_badge: true   # Show current provider
+    syntax_highlight: true # Highlight code blocks
+  
+  chat:
+    max_history_display: 10  # Show last N messages
+    auto_scroll: true
+    line_wrap: true
+    
+  performance:
+    render_fps: 30         # Terminal refresh rate
+    chunk_size: 1          # Tokens per render update
