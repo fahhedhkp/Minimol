@@ -1,0 +1,104 @@
+[build-system]
+requires = ["setuptools>=65.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "minimol"
+version = "0.1.0"
+description = "Advanced 70B parameter neural network with terminal UI and multi-provider LLM support"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [
+    {name = "Fahhed", email = "fahhedhh@gmail.com"}
+]
+keywords = ["ai", "neural-network", "llm", "terminal-ui", "agents"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+
+dependencies = [
+    "numpy>=1.24.0",
+    "torch>=2.0.0",
+    "transformers>=4.30.0",
+    "pydantic>=2.0.0",
+    "pyyaml>=6.0",
+    "python-dotenv>=1.0.0",
+    "httpx>=0.24.0",
+    "aiohttp>=3.8.0",
+]
+
+[project.optional-dependencies]
+ui = [
+    "rich>=13.5.0",
+    "prompt-toolkit>=3.0.0",
+    "pygments>=2.16.0",
+]
+
+claude = [
+    "anthropic>=0.7.0",
+]
+
+openai = [
+    "openai>=1.0.0",
+]
+
+google = [
+    "google-generativeai>=0.3.0",
+]
+
+mistral = [
+    "mistralai>=0.0.7",
+]
+
+cohere = [
+    "cohere>=4.0.0",
+]
+
+dev = [
+    "pytest>=7.0.0",
+    "pytest-asyncio>=0.21.0",
+    "pytest-cov>=4.0.0",
+    "black>=23.0.0",
+    "ruff>=0.1.0",
+    "mypy>=1.0.0",
+]
+
+all = [
+    "minimol[ui,claude,openai,google,mistral,cohere,dev]",
+]
+
+[project.urls]
+Repository = "https://github.com/fahhedhh-ctrl/Minimol"
+Documentation = "https://github.com/fahhedhh-ctrl/Minimol/wiki"
+"Bug Tracker" = "https://github.com/fahhedhh-ctrl/Minimol/issues"
+
+[project.scripts]
+minimol-ui = "minimol.terminal_ui:main"
+minimol = "minimol.cli:main"
+
+[tool.setuptools]
+packages = ["minimol"]
+
+[tool.black]
+line-length = 100
+target-version = ['py310']
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+select = ["E", "F", "W"]
+
+[tool.mypy]
+python_version = "3.10"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = false
